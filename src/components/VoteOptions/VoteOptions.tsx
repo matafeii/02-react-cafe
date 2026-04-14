@@ -1,28 +1,39 @@
 import styles from "./VoteOptions.module.css";
+import type { FeedbackOption } from "../../types/votes";
 
-export default function VoteOptions() {
-  const handleVote = (option: string) => {
-    console.log(`Voted: ${option}`);
-  };
+interface VoteOptionsProps {
+  onFeedback: (option: FeedbackOption) => void;
+  onReset: () => void;
+}
 
+export default function VoteOptions({
+  onFeedback,
+  onReset,
+}: VoteOptionsProps) {
   return (
     <div className={styles.container}>
-      <button className={styles.button} onClick={() => handleVote("Espresso")}>
-        ☕ Espresso
+      <button
+        className={styles.button}
+        onClick={() => onFeedback("good")}
+        type="button"
+      >
+        Good
       </button>
       <button
         className={styles.button}
-        onClick={() => handleVote("Cappuccino")}
+        onClick={() => onFeedback("neutral")}
+        type="button"
       >
-        🍶 Cappuccino
-      </button>
-      <button className={styles.button} onClick={() => handleVote("Latte")}>
-        🥛 Latte
+        Neutral
       </button>
       <button
-        className={styles.reset}
-        onClick={() => console.log("Reset votes")}
+        className={styles.button}
+        onClick={() => onFeedback("bad")}
+        type="button"
       >
+        Bad
+      </button>
+      <button className={styles.reset} onClick={onReset} type="button">
         Reset
       </button>
     </div>

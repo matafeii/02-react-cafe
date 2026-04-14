@@ -1,21 +1,27 @@
 /**
- * Represents a vote for a coffee option
+ * Available feedback options
  */
-export interface Vote {
-  option: string;
-  votes: number;
+export type FeedbackOption = "good" | "neutral" | "bad";
+
+/**
+ * Feedback statistics
+ */
+export interface Feedback {
+  good: number;
+  neutral: number;
+  bad: number;
 }
 
 /**
- * Available coffee options for voting
+ * Props for components that handle feedback
  */
-export type CoffeeOption = "Espresso" | "Cappuccino" | "Latte";
+export interface FeedbackProps {
+  onFeedback: (option: FeedbackOption) => void;
+}
 
 /**
- * Statistics for all coffee options
+ * Props for components that display feedback statistics
  */
-export interface VoteStats {
-  espresso: number;
-  cappuccino: number;
-  latte: number;
+export interface FeedbackStatsProps {
+  stats: Feedback;
 }
