@@ -3,35 +3,18 @@ import type { Votes } from "../../types/votes";
 
 interface VoteStatsProps {
   votes: Votes;
+  totalVotes: number;
+  positiveRate: number;
 }
 
-export default function VoteStats({ votes }: VoteStatsProps) {
-  const total = votes.good + votes.neutral + votes.bad;
-  const positivePercentage =
-    total > 0 ? Math.round((votes.good / total) * 100) : 0;
-
+export default function VoteStats({ votes, totalVotes, positiveRate }: VoteStatsProps) {
   return (
     <div className={styles.container}>
-      <div className={styles.stat}>
-        <span>Good:</span>
-        <strong>{votes.good}</strong>
-      </div>
-      <div className={styles.stat}>
-        <span>Neutral:</span>
-        <strong>{votes.neutral}</strong>
-      </div>
-      <div className={styles.stat}>
-        <span>Bad:</span>
-        <strong>{votes.bad}</strong>
-      </div>
-      <div className={styles.stat}>
-        <span>Total:</span>
-        <strong>{total}</strong>
-      </div>
-      <div className={styles.stat}>
-        <span>Positive:</span>
-        <strong>{positivePercentage}%</strong>
-      </div>
+      <p className={styles.stat}>Good: <strong>{votes.good}</strong></p>
+      <p className={styles.stat}>Neutral: <strong>{votes.neutral}</strong></p>
+      <p className={styles.stat}>Bad: <strong>{votes.bad}</strong></p>
+      <p className={styles.stat}>Total: <strong>{totalVotes}</strong></p>
+      <p className={styles.stat}>Positive: <strong>{positiveRate}%</strong></p>
     </div>
   );
 }

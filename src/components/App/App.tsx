@@ -25,13 +25,14 @@ export default function App() {
   };
 
   const total = votes.good + votes.neutral + votes.bad;
+  const positiveRate = total > 0 ? Math.round((votes.good / total) * 100) : 0;
 
   return (
     <div className={styles.app}>
       <CafeInfo />
       {total > 0 && <Notification />}
       <VoteOptions onVote={handleVote} onReset={resetVotes} canReset={true} />
-      {total > 0 && <VoteStats votes={votes} />}
+      {total > 0 && <VoteStats votes={votes} totalVotes={total} positiveRate={positiveRate} />}
     </div>
   );
 }
