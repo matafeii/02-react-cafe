@@ -13,14 +13,6 @@ export interface Votes {
 }
 
 /**
- * Props for components that handle voting
- */
-export interface VoteProps {
-  onVote: (type: VoteType) => void;
-  onReset: () => void;
-}
-
-/**
  * Props for components that display vote statistics
  */
 export interface VoteStatsProps {
