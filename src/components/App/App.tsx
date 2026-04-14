@@ -31,7 +31,7 @@ export default function App() {
     <div className={styles.app}>
       <CafeInfo />
       {total === 0 && <Notification />}
-      <VoteOptions onVote={handleVote} onReset={resetVotes} canReset={true} />
+      <VoteOptions onVote={handleVote} onReset={resetVotes} canReset={total > 0} />
       {total > 0 && <VoteStats votes={votes} totalVotes={total} positiveRate={positiveRate} />}
     </div>
   );
