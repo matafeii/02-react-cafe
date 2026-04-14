@@ -1,30 +1,28 @@
 import styles from "./VoteStats.module.css";
-import type { Feedback } from "../../types/votes";
+import type { Votes } from "../../types/votes";
 
 interface VoteStatsProps {
-  stats: Feedback;
-  total: number;
-  positivePercentage: number;
+  votes: Votes;
 }
 
-export default function VoteStats({
-  stats,
-  total,
-  positivePercentage,
-}: VoteStatsProps) {
+export default function VoteStats({ votes }: VoteStatsProps) {
+  const total = votes.good + votes.neutral + votes.bad;
+  const positivePercentage =
+    total > 0 ? Math.round((votes.good / total) * 100) : 0;
+
   return (
     <div className={styles.container}>
       <div className={styles.stat}>
         <span>Good:</span>
-        <strong>{stats.good}</strong>
+        <strong>{votes.good}</strong>
       </div>
       <div className={styles.stat}>
         <span>Neutral:</span>
-        <strong>{stats.neutral}</strong>
+        <strong>{votes.neutral}</strong>
       </div>
       <div className={styles.stat}>
         <span>Bad:</span>
-        <strong>{stats.bad}</strong>
+        <strong>{votes.bad}</strong>
       </div>
       <div className={styles.stat}>
         <span>Total:</span>

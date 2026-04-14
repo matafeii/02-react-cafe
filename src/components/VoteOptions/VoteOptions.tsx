@@ -1,34 +1,31 @@
 import styles from "./VoteOptions.module.css";
-import type { FeedbackOption } from "../../types/votes";
+import type { VoteType } from "../../types/votes";
 
 interface VoteOptionsProps {
-  onFeedback: (option: FeedbackOption) => void;
+  onVote: (type: VoteType) => void;
   onReset: () => void;
 }
 
-export default function VoteOptions({
-  onFeedback,
-  onReset,
-}: VoteOptionsProps) {
+export default function VoteOptions({ onVote, onReset }: VoteOptionsProps) {
   return (
     <div className={styles.container}>
       <button
         className={styles.button}
-        onClick={() => onFeedback("good")}
+        onClick={() => onVote("good")}
         type="button"
       >
         Good
       </button>
       <button
         className={styles.button}
-        onClick={() => onFeedback("neutral")}
+        onClick={() => onVote("neutral")}
         type="button"
       >
         Neutral
       </button>
       <button
         className={styles.button}
-        onClick={() => onFeedback("bad")}
+        onClick={() => onVote("bad")}
         type="button"
       >
         Bad

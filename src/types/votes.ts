@@ -1,27 +1,28 @@
 /**
- * Available feedback options
+ * Available vote types
  */
-export type FeedbackOption = "good" | "neutral" | "bad";
+export type VoteType = "good" | "neutral" | "bad";
 
 /**
- * Feedback statistics
+ * Votes statistics interface
  */
-export interface Feedback {
+export interface Votes {
   good: number;
   neutral: number;
   bad: number;
 }
 
 /**
- * Props for components that handle feedback
+ * Props for components that handle voting
  */
-export interface FeedbackProps {
-  onFeedback: (option: FeedbackOption) => void;
+export interface VoteProps {
+  onVote: (type: VoteType) => void;
+  onReset: () => void;
 }
 
 /**
- * Props for components that display feedback statistics
+ * Props for components that display vote statistics
  */
-export interface FeedbackStatsProps {
-  stats: Feedback;
+export interface VoteStatsProps {
+  votes: Votes;
 }
