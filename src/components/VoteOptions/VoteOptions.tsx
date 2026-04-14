@@ -1,6 +1,6 @@
 import styles from "./VoteOptions.module.css";
 
-export function VoteOptions() {
+export default function VoteOptions() {
   const handleVote = (option: string) => {
     console.log(`Voted: ${option}`);
   };
@@ -10,13 +10,19 @@ export function VoteOptions() {
       <button className={styles.button} onClick={() => handleVote("Espresso")}>
         ☕ Espresso
       </button>
-      <button className={styles.button} onClick={() => handleVote("Cappuccino")}>
+      <button
+        className={styles.button}
+        onClick={() => handleVote("Cappuccino")}
+      >
         🍶 Cappuccino
       </button>
       <button className={styles.button} onClick={() => handleVote("Latte")}>
         🥛 Latte
       </button>
-      <button className={styles.reset} onClick={() => console.log("Reset votes")}>
+      <button
+        className={styles.reset}
+        onClick={() => console.log("Reset votes")}
+      >
         Reset
       </button>
     </div>
