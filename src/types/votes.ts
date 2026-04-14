@@ -11,10 +11,3 @@ export interface Votes {
   neutral: number;
   bad: number;
 }
-
-/**
- * Props for components that display vote statistics
- */
-export interface VoteStatsProps {
-  votes: Votes;
-}
